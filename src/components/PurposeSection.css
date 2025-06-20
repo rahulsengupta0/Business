@@ -1,0 +1,48 @@
+.purpose-section {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 2rem;
+  background-color: #e8ede0;
+}
+
+.image-side,
+.text-side {
+  flex: 1;
+}
+
+.image-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-side img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.text-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.text-side h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.text-side p {
+  font-size: 1.25rem;
+  color: #555;
+  max-width: 600px;
+}
+
+@media (min-width: 768px) {
+  .purpose-section {
+    flex-direction: row;
+  }
+}

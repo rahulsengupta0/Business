@@ -1,0 +1,78 @@
+/* ===================
+    GENERAL STYLES
+================== */
+.team {
+  text-align: center;
+  padding: 40px;
+  background-color: #eeefe7;
+}
+
+.team h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.team-item img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+}
+
+/* ===================
+    TEXT BOX
+================== */
+.text-box {
+  position: relative;
+  background-color: #0ee1ff;
+  color: #fff;
+  padding: 20px;
+  margin-left: -30px;
+  margin-top: 30px;
+  max-width: 250px;
+
+  /* START VISIBLE */
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+.text-box h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.text-box h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.text-box p {
+  font-size: 0.9rem;
+}
+
+/* ===================
+    HOVER TRIGGER
+================== */
+.team-item:hover .text-box {
+  transform: translateX(10px);
+}
