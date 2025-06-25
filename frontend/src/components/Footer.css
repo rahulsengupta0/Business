@@ -1,0 +1,95 @@
+.footer {
+  background-color: #273147;
+  color: #c5cbd9;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.top-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 2rem 3rem;
+  flex-wrap: wrap;
+  color: #000;
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-contact a {
+  color: #00cfff;
+  text-decoration: none;
+  display: block;
+}
+
+.footer-icon {
+  font-size: 1.5rem;
+  color: #00cfff;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+  color: #00cfff;
+}
+
+.main-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem;
+  flex-wrap: wrap;
+  background-color: #273147;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+  margin: 1rem 0;
+}
+
+.footer-col h3,
+.footer-col h4 {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.footer-col ul li::before {
+  content: '|';
+  position: absolute;
+  left: 0;
+  color: #00cfff;
+  font-weight: bold;
+}
+
+.scroll-top {
+  text-align: right;
+  padding: 1rem 2rem;
+}
+
+.scroll-top a {
+  background: #101928;
+  color: white;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
