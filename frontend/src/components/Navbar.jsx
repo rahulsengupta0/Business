@@ -6,7 +6,8 @@ import profile from '../assets/profile.jpg';
 
 
 export default function Navbar() {
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate(); // ✅ Initialize
+  //  navigate
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
 
@@ -36,23 +37,30 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar ${showNavbar ? 'show' : 'hide'}`}>
-      <img src={logo} alt="Company Logo" className="navbar-logo" />
-      <ul className="navbar-links">
-        <li>About</li>
-        <li>Services</li>
-        <li>Blog</li>
-        <li>Portfolio</li>
-        <li>Careers</li>
-        <li>Get a Quote</li>
-        <li>
-          <button
-            className="call-button"
-            onClick={() => navigate('/meeting')} // ✅ Navigate to the route
-          >
-            Schedule a Call Now
-          </button>
-        </li>
-          <li>
+      <img
+  src={logo}
+  alt="Company Logo"
+  className="navbar-logo"
+  onClick={() => navigate('/')}
+  style={{ cursor: 'pointer' }}
+/>
+
+<ul className="navbar-links">
+  <li onClick={() => navigate('/about')}>About</li>
+  <li onClick={() => navigate('/service')}>Services</li>
+  <li onClick={() => navigate('/blog')}>Blog</li>
+  <li onClick={() => navigate('/Portfolio')}>Portfolio</li>
+  <li onClick={() => navigate('/careers')}>Careers</li>
+  <li onClick={() => navigate('/quote')}>Get a Quote</li>
+  <li>
+    <button
+      className="call-button"
+      onClick={() => navigate('/meeting')}
+    >
+      Schedule a Call Now
+    </button>
+  </li>
+  <li>
     <img
       src={profile}
       alt="Profile"
@@ -60,7 +68,8 @@ export default function Navbar() {
       onClick={() => navigate('/dashboard')}
     />
   </li>
-      </ul>
+</ul>
+
     </nav>
   );
 }

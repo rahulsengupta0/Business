@@ -18,6 +18,7 @@ import { useNavigate } from 'react-router-dom';
 import PopupModal from './PopupModal';
 import HeroSlider from './HeroSlider';
 import ChatBot from './ChatBot';
+import Navbar from './Navbar';
  // adjust path if needed
 
 
@@ -105,6 +106,7 @@ const [showScrollPopup, setShowScrollPopup] = useState(false);
   
   return (
     <>
+      <Navbar />
       <div className="landing">
         <div className="text-side">
           <h1>{slides[index]?.text}</h1>

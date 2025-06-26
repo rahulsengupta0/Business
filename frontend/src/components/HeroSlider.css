@@ -1,10 +1,11 @@
-/* src/components/HeroSlider.css */
+/* Hero Container */
 .hero-container {
   position: relative;
   height: 100vh;
   overflow: hidden;
 }
 
+/* Each Slide */
 .hero-slide {
   position: absolute;
   top: 0;
@@ -25,37 +26,51 @@
   z-index: 1;
 }
 
+/* Dark Overlay with Gradient */
 .hero-overlay {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.2));
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.2));
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 6rem;
+  justify-content: center;    /* center horizontally */
+  align-items: center;        /* center vertically */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
+/* Content Wrapper */
 .hero-content {
   color: #fff;
   max-width: 600px;
   animation: fadeInUp 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
+/* Main Heading */
 .hero-content h1 {
   font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 1rem;
 }
 
+/* Subtext / Paragraph */
 .hero-content p {
   font-size: 1.2rem;
+  line-height: 1.6;
   margin-bottom: 2rem;
 }
 
+/* Button Container */
 .hero-buttons {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
+/* Button Base Style */
 .hero-btn {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -65,21 +80,25 @@
   transition: all 0.3s ease;
 }
 
+/* Filled Button Style */
 .hero-btn.filled {
   background-color: #f7c744;
   color: #000;
 }
 
+/* Outlined Button Style */
 .hero-btn.outlined {
   background-color: transparent;
   color: #fff;
 }
 
+/* Hover Effect */
 .hero-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Fade Animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -88,5 +107,26 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-btn {
+    width: 100%;
+    text-align: center;
   }
 }

@@ -15,22 +15,34 @@ const ContactPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setStatus('');
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsLoading(true);
+  setStatus('');
 
-    try {
-      // Simulated API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+  try {
+    const response = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setStatus('error');
-    } finally {
-      setIsLoading(false);
+    } else {
+      throw new Error('Failed to send');
     }
-  };
+  } catch (error) {
+    console.error(error);
+    setStatus('error');
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <div className="contact-container">
@@ -67,50 +79,51 @@ const ContactPage = () => {
           {status === 'success' && 'Message sent successfully!'}
           {status === 'error' && 'Failed to send message. Please try again.'}
         </div>
-        <div className="contact-form" onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              placeholder="Enter your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              aria-required="true"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="Enter a valid email address"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              aria-required="true"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Your Message"
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              aria-required="true"
-            ></textarea>
-          </div>
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Sending...' : 'SUBMIT'}
-          </button>
-        </div>
+        <form className="contact-form" onSubmit={handleSubmit}>
+  <div className="input-group">
+    <label htmlFor="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      name="name"
+      placeholder="Enter your Name"
+      value={formData.name}
+      onChange={handleChange}
+      required
+      aria-required="true"
+    />
+  </div>
+  <div className="input-group">
+    <label htmlFor="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      name="email"
+      placeholder="Enter a valid email address"
+      value={formData.email}
+      onChange={handleChange}
+      required
+      aria-required="true"
+    />
+  </div>
+  <div className="input-group">
+    <label htmlFor="message">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      placeholder="Your Message"
+      rows="5"
+      value={formData.message}
+      onChange={handleChange}
+      required
+      aria-required="true"
+    ></textarea>
+  </div>
+  <button type="submit" disabled={isLoading}>
+    {isLoading ? 'Sending...' : 'SUBMIT'}
+  </button>
+</form>
+
       </div>
     </div>
   );

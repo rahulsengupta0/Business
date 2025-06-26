@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styles from './AuthForm.module.css';
 import { FaUserPlus, FaSignInAlt } from 'react-icons/fa';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AuthForm = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState(''); // 'success' or 'error'
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     const { type, value } = e.target;
@@ -17,42 +20,50 @@ const AuthForm = () => {
   };
 
   const handleSubmit = async () => {
-    const endpoint = isSignup ? 'signup' : 'signin';
-    const url = `http://localhost:5000/api/auth/${endpoint}`;
+  const endpoint = isSignup ? 'signup' : 'signin';
+  const url = `http://localhost:5000/api/auth/${endpoint}`;
 
-    try {
-      const body = isSignup
-        ? {
-            name: formData.name,
-            email: formData.email,
-            password: formData.password,
-          }
-        : {
-            email: formData.email,
-            password: formData.password,
-          };
+  try {
+    const body = isSignup
+      ? {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }
+      : {
+          email: formData.email,
+          password: formData.password,
+        };
 
-      const res = await axios.post(url, body);
+    const res = await axios.post(url, body);
 
-      if (isSignup) {
-        setMessage('✅ Account created successfully! Please sign in.');
-        setMessageType('success');
-        setIsSignup(false); // Automatically switch to Sign In
-      } else {
-        const userName = res.data.user?.name || 'User';
-        setMessage(`✅ Welcome, ${userName}!`);
-        setMessageType('success');
-      }
+    if (isSignup) {
+      setMessage('✅ Account created successfully! Please sign in.');
+      setMessageType('success');
+      setIsSignup(false); // Switch to sign in
+    } else {
+      const userName = res.data.user?.name || 'User';
+      setMessage(`✅ Welcome, ${userName}!`);
+      setMessageType('success');
 
-      // Optionally clear form
-      setFormData({ name: '', email: '', password: '' });
-    } catch (err) {
-      const errorMsg =
-        err.response?.data?.message || '❌ Something went wrong. Please try again.';
-      setMessage(errorMsg);
-      setMessageType('error');
+      // ✅ Save token and redirect
+      localStorage.setItem('token', res.data.token);
+
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 1000);
     }
-  };
+
+    // Clear form
+    setFormData({ name: '', email: '', password: '' });
+  } catch (err) {
+    const errorMsg =
+      err.response?.data?.message || '❌ Something went wrong. Please try again.';
+    setMessage(errorMsg);
+    setMessageType('error');
+  }
+};
+
 
   // Auto-hide message after 4 seconds
   useEffect(() => {

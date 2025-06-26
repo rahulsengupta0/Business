@@ -11,14 +11,38 @@ export default function ScheduleMeeting() {
   const [time, setTime] = useState('');
   const [form, setForm] = useState({ name: '', email: '' });
 
-  const handleBooking = () => {
-    if (!form.name || !form.email || !date || !time) {
-      alert('Please complete all fields');
-      return;
+const handleBooking = async () => {
+  if (!form.name || !form.email || !date || !time) {
+    alert('Please complete all fields');
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:5000/api/meeting", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        date,
+        time
+      }),
+    });
+
+    if (response.ok) {
+      alert("Appointment booked successfully!");
+      setForm({ name: '', email: '' });
+      setDate(null);
+      setTime('');
+    } else {
+      throw new Error("Booking failed");
     }
-    alert(`Appointment booked on ${date} at ${time} for ${form.name}`);
-    // Here you could send this data to a backend
-  };
+  } catch (err) {
+    console.error(err);
+    alert("An error occurred while booking");
+  }
+};
+
 
   return (
     <div className="schedule-container">

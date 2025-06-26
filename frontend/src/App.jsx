@@ -7,12 +7,16 @@ import Footer from "./components/Footer";
 import ContactPage from "./components/ContactPage";
 import AuthForm from "./components/AuthForm";
 import AdminDashboard from "./components/AdminDashboard";
+import AboutPage from "./components/AboutPage";
+import BlogPage from "./components/BlogPage";
+import Portfolio from "./components/Portfolio";
+import Service from "./components/Service";
 
 
 export default function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/meeting" element={<ScheduleMeeting />} /> {/* ✅ correct casing */}
@@ -20,6 +24,10 @@ export default function App() {
         <Route path="/authForm" element={<AuthForm/>} />
         {/* <Route path="/dashboard" element={<AdminDashboard/>}/> */}
         <Route path="/dashboard" element={<AdminDashboard/>}/>
+        <Route path="/about" element={<AboutPage/>}/>
+        <Route path="/blog" element={<BlogPage/>}/>
+        <Route path="/Portfolio" element={<Portfolio/>}/>
+        <Route path="/service" element={<Service/>}/>
       </Routes>
       <Footer />
     </>

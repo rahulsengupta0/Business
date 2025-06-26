@@ -2,6 +2,8 @@
   padding: 40px;
   background-color: #f9f9f9;
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .blog-slider h2 {
@@ -63,11 +65,13 @@
   font-size: 1.25rem;
   font-weight: bold;
   color: #333;
+  margin-bottom: 10px;
 }
 
-.blog-content p {
+.subtitle {
   font-size: 0.9rem;
   color: #555;
+  margin-bottom: 10px;
 }
 
 .nav-button {
@@ -90,4 +94,29 @@
 
 .nav-button.right {
   right: 10px;
+}
+
+.newsletter-section {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.newsletter-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.newsletter-section input[type="email"] {
+  padding: 8px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.newsletter-section label {
+  margin-left: 10px;
 }
