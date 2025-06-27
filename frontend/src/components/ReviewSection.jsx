@@ -1,5 +1,5 @@
 import React from "react";
-import "./ReviewSection.css"; // Import the CSS file
+import "./ReviewSection.css";
 import person from "../assets/person4.jpg";
 
 const ReviewSection = () => {

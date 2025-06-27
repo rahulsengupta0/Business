@@ -1,33 +1,62 @@
 .review-section {
-  background-color: #f9fafb;
-  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #00272d 0%, #001a1e 100%);
+  padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+  overflow: hidden;
 }
 
 .review-heading {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 2rem;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #f0e6d2;
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: fadeIn 1.2s ease-out;
+  position: relative;
+}
+
+.review-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #d4a017;
+  margin: 0.5rem auto;
+  transition: width 0.3s ease;
+}
+
+.review-section:hover .review-heading::after {
+  width: 80px;
 }
 
 .review-card {
   display: flex;
   flex-direction: column;
   max-width: 900px;
-  background-color: #fff;
+  background: rgba(26, 44, 48, 0.9);
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0px 4px 20px rgba(0,0,0,.1);
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  animation: slideUp 0.8s ease-out backwards;
 }
 
 @media (min-width: 768px) {
   .review-card {
     flex-direction: row;
+    align-items: center;
   }
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
 .review-image {
@@ -38,51 +67,130 @@
 }
 
 .review-image img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
   border-radius: 12px;
-  max-width: 100%;
-  height: auto;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.9);
+}
+
+.review-card:hover .review-image img {
+  transform: scale(1.05);
+  filter: brightness(1);
 }
 
 .review-content {
   flex: 2;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .review-stars {
-  font-size: 1.25rem;
-  color: #f59e0b;
+  font-size: 1.5rem;
+  color: #d4a017;
+  margin-bottom: 1rem;
 }
 
 .review-text {
-  font-size: 1rem;
-  color: #4b5563;
+  font-size: 1.1rem;
+  color: #b0c4c8;
   margin: 1rem 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.review-card:hover .review-text {
+  color: #f0e6d2;
 }
 
 .review-author h3 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #111827;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f0e6d2;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.review-author h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #d4a017;
+  margin-top: 0.5rem;
+  transition: width 0.3s ease;
+}
+
+.review-card:hover .review-author h3::after {
+  width: 60px;
 }
 
 .review-author span {
   font-size: 1rem;
-  color: #6b7280;
+  color: #b0c4c8;
+}
+
+.review-card:hover .review-author span {
+  color: #d4a017;
 }
 
 .review-button {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  background-color: #2563eb;
-  color: #fff;
-  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, #d4a017 0%, #b08c12 100%);
+  color: #1a2c30;
+  font-weight: 600;
   border-radius: 6px;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .review-button:hover {
-  background-color: #1d4ed8;
+  background: linear-gradient(135deg, #f0e6d2 0%, #d4a017 100%);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .review-section {
+    padding: 3rem 1rem;
+  }
+  .review-heading {
+    font-size: 2.2rem;
+  }
+  .review-card {
+    padding: 1.5rem;
+  }
+  .review-image img {
+    width: 150px;
+    height: 150px;
+  }
+  .review-content {
+    padding: 1rem;
+  }
+  .review-stars {
+    font-size: 1.2rem;
+  }
+  .review-text {
+    font-size: 1rem;
+  }
+  .review-author h3 {
+    font-size: 1.3rem;
+  }
+  .review-author span {
+    font-size: 0.9rem;
+  }
+  .review-button {
+    padding: 0.5rem 1rem;
+  }
 }

@@ -5,6 +5,7 @@ import person2 from '../assets/person2.jpg';
 import person3 from '../assets/person3.jpg';
 import person4 from '../assets/person4.jpg';
 import person5 from '../assets/person5.jpg';
+import Teampic from '../assets/teams.jpg';
 
 const teamMembers = [
   {

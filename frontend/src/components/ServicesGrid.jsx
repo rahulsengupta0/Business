@@ -6,6 +6,7 @@ import financial from '../assets/financial.jpg';
 import consulting from '../assets/consulting.jpg';
 import website from '../assets/website.jpg';
 import business from '../assets/business.jpg';
+import serviceBackground from '../assets/serviceBackground.jpg';
 import './ServicesGrid.css';
 
 export default function ServicesGrid() {

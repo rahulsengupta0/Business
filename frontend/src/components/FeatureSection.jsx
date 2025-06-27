@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import "./FeatureSection.css";
-
+import brand from '../assets/brand.jpg';
+import nocode from '../assets/nocode.jpg';
+import serviceBackground from '../assets/serviceBackground.jpg';
+import uiux from '../assets/uiux.jpg';
 export default function FeatureSection() {
   const features = [
     {
