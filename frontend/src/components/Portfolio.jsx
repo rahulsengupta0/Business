@@ -608,7 +608,7 @@ const Portfolio = () => {
                 <MapPin style={styles.contactIcon} />
                 <div>
                   <h4 style={styles.contactItemTitle}>Office</h4>
-                  <p>123 Business District, New York, NY 10001</p>
+                  <p>123 Business District, New York, NY 100011</p>
                 </div>
               </div>
             </div>
