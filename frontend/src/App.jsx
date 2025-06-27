@@ -11,6 +11,7 @@ import AboutPage from "./components/AboutPage";
 import BlogPage from "./components/BlogPage";
 import Portfolio from "./components/Portfolio";
 import Service from "./components/Service";
+import CareersPage from "./components/CareersPage";
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/blog" element={<BlogPage/>}/>
         <Route path="/Portfolio" element={<Portfolio/>}/>
         <Route path="/service" element={<Service/>}/>
+        <Route path="/careers" element={<CareersPage/>}/>
       </Routes>
       <Footer />
     </>
