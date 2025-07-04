@@ -9,10 +9,12 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy":"npm run build"
+    "predeploy": "npm run build"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.2",
     "flatpickr": "^4.6.13",
+    "jwt-decode": "^4.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-flatpickr": "^4.0.10",
